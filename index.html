@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+</head>
+<body>
+    <div id="counterOutput">sdfsdfsd</div>
+    <div id="counterOutput2">sdfsdfsd</div>
+    <script>
+
+        class Counter{
+            constructor( targetElement, name ){
+                var theCurrentObject = this;
+                this.handleDivClick = theCurrentObject.handleDivClick.bind( theCurrentObject );
+                this.name = name;
+                this.domElement = $( targetElement );
+                this.addEventListeners();
+            }
+            addEventListeners(){
+                this.domElement.click( this.handleDivClick )
+            }
+            handleDivClick(){
+                debugger;
+                console.log('it worked!: '  + this.name);
+            }
+        }
+        
+        var test = new Counter("#counterOutput", 'annie');
+        var test2 = new Counter("#counterOutput2", 'nancy');
+
+        function greeting(){
+            debugger;
+            console.log( "greeting: " + this.hello); 
+        }
+        var testObject = {
+            hello: 'yo',
+            greet: greeting
+        }
+        var anotherObject = {
+            hello: 'wazzup',
+            greet: function(){
+                testObject.greet()
+            }
+        }
+
+            </script>
+</body>
+</html>
